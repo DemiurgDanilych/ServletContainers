@@ -46,7 +46,10 @@ public class PostRepository {
     }
 
     public void removeById(long id) {
-        repository.remove(id);
-        throw new NotFoundException();
+        if(repository.containsKey(id)) {
+            repository.remove(id);
+        } else {
+            throw new NotFoundException();
+        }
     }
 }
